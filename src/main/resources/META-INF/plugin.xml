@@ -1,0 +1,63 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>io.github.aowubulao.simple-ai-reviewer</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
+    <name>Simple AI Code Reviewer</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor url="https://github.com/aowubulao">Neo</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
+    <description><![CDATA[
+        简单的 AI Code Review插件。<br>
+        <ul>
+        <li>在提交代码的时候，可以对提交的代码进行Code Review</li>
+        <li>生成Markdown格式的报告</li>
+        <li>支持自定义配置Api与模型</li>
+        </ul>
+
+        <br>
+        A simple AI Code Review plugin.<br>
+        <ul>
+        <li>Perform AI-powered code review when committing code</li>
+        <li>Generate Markdown format reports</li>
+        <li>Support custom API and model configuration</li>
+        </ul>
+    ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.vcs</depends>
+    <depends>Git4Idea</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Settings page -->
+        <applicationConfigurable
+                parentId="tools"
+                instance="io.github.aowubulao.simpleaireviewer.settings.AIReviewerConfigurable"
+                id="io.github.aowubulao.simpleaireviewer.settings"
+                displayName="AI Code Reviewer"/>
+
+        <!-- Application service for settings -->
+        <applicationService
+                serviceImplementation="io.github.aowubulao.simpleaireviewer.settings.AIReviewerSettings"/>
+    </extensions>
+
+    <!-- Actions -->
+    <actions>
+        <!-- Git commit dialog action -->
+        <action id="AICodeReview"
+                class="io.github.aowubulao.simpleaireviewer.actions.AICodeReviewAction"
+                text="AI Code Review"
+                description="Generate AI-powered code review for current changes">
+            <add-to-group group-id="Vcs.MessageActionGroup" anchor="after" relative-to-action="CheckinProject"/>
+        </action>
+    </actions>
+</idea-plugin>
