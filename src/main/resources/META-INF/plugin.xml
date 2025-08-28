@@ -13,19 +13,19 @@
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
     <description><![CDATA[
-        简单的 AI Code Review插件。<br>
-        <ul>
-        <li>在提交代码的时候，可以对提交的代码进行Code Review</li>
-        <li>生成Markdown格式的报告</li>
-        <li>支持自定义配置Api与模型</li>
-        </ul>
-
-        <br>
         A simple AI Code Review plugin.<br>
         <ul>
         <li>Perform AI-powered code review when committing code</li>
         <li>Generate Markdown format reports</li>
         <li>Support custom API and model configuration</li>
+        </ul>
+
+        <br>
+        简单的 AI Code Review插件。<br>
+        <ul>
+        <li>在提交代码的时候，可以对提交的代码进行Code Review</li>
+        <li>生成Markdown格式的报告</li>
+        <li>支持自定义配置Api与模型</li>
         </ul>
     ]]></description>
 

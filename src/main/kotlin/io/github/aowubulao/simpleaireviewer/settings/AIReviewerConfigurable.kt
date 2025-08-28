@@ -53,7 +53,7 @@ class AIReviewerConfigurable : Configurable {
                 row("Model:") {
                     cell(modelField)
                         .columns(80)
-                        .comment("Enter the AI model name to use for code review (e.g., gpt-4, claude-3-sonnet, deepseek-chat)")
+                        .comment("Enter the AI model name to use for code review (e.g., gpt-4, deepseek-chat) (Only OpenAI-compatible API formats are supported now)")
                 }
                 row("Report Language:") {
                     cell(reportLanguage)

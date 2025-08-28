@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "io.github.aowubulao"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.0-RELEASE"
 
 repositories {
     mavenCentral()
@@ -46,6 +46,9 @@ intellijPlatform {
             Initial version
         """.trimIndent()
     }
+
+    buildSearchableOptions = false
+    instrumentCode = false
 }
 
 tasks {
@@ -53,6 +56,21 @@ tasks {
     withType<JavaCompile> {
         sourceCompatibility = "21"
         targetCompatibility = "21"
+    }
+
+    jar {
+        from(configurations.runtimeClasspath.get().map {
+            if (it.isDirectory()) it else zipTree(it)
+        }) {
+            exclude("META-INF/*.SF")
+            exclude("META-INF/*.DSA")
+            exclude("META-INF/*.RSA")
+            exclude("META-INF/DEPENDENCIES")
+            exclude("META-INF/LICENSE*")
+            exclude("META-INF/NOTICE*")
+            exclude("META-INF/versions/**")
+        }
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     }
 }
 
